@@ -1,0 +1,22 @@
+{
+  "name": "Voidr Images",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "For more information see the [docs](https://voidr-images.readme.io/reference/intro)"
+    },
+    {
+      "type": "checkbox",
+      "id": "voidr_enable",
+      "label": "Enable Voidr Images",
+      "info": "Toggle the Voidr Images feature"
+    },
+    {
+      "type": "text",
+      "id": "voidr_project",
+      "label": "Voidr Project Name",
+      "default": "my-project-name",
+      "info": "Project name that you created on your Voidr Dashboard"
+    }
+  ]
+}

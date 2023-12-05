@@ -1,0 +1,66 @@
+{% capture image_url %}
+    {% if settings.voidr_enable %}
+      {% assign voidr_api_url = "https://img.voidr.co" %}
+      {% assign src_without_domain = src | split: '//' %}
+      {% assign base_url = voidr_api_url | append: '/' | append: settings.voidr_project %}
+      {% assign params = '' %}
+
+      {% if compress %}
+        {% assign params = params | append: 'compress:' | append: compress %}
+
+        {% assign params = params | append: '/' %}
+      {% endif %}
+      
+      {% if convert %}
+        {% assign params = params | append: 'convert:' | append: convert %}
+
+        {% assign params = params | append: '/' %}
+      {% endif %}
+
+      {% if radius %}
+        {% assign params = params | append: 'radius:' | append: radius %}
+
+        {% assign params = params | append: '/' %}
+      {% endif %}
+
+      {% if blur %}
+        {% assign params = params | append: 'blur:' | append: blur %}
+
+        {% assign params = params | append: '/' %}
+      {% endif %}
+
+      {% if rotate %}
+        {% assign params = params | append: 'rotate:' | append: rotate %}
+
+        {% assign params = params | append: '/' %}
+      {% endif %}
+
+      {% if resize %}
+        {% assign params = params | append: 'resize:' | append: resize %}
+        
+        {% if resizefit %}
+          {% assign params = params | append: ',fit:' | append: resizefit %}
+        {% endif %}
+        
+        {% assign params = params | append: '/' %}
+      {% endif %}
+
+      {% if crop %}
+        {% assign params = params | append: 'crop:' | append: crop %}
+        {% if cropopts %}
+          {% assign params = params | append: ',position:' | append: cropopts %}
+        {% endif %}
+        
+        {% assign params = params | append: '/' %}
+      {% endif %}
+
+      {% if params != '' %}
+        {{ base_url }}/{{ params }}fetch/https://{{ src_without_domain }}
+      {% else %}
+        {{ base_url }}/fetch/https://{{ src_without_domain }}
+      {% endif %}
+    {% else %}
+      {{ src }}
+    {% endif %}
+{% endcapture -%}
+{{- image_url | strip }}

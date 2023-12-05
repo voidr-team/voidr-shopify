@@ -1,0 +1,5 @@
+{% assign  product_url = image_url | img_url: 'master' %}
+{%- capture voidr_image_url %}{% render 'voidr', src: product_url, compress: '20', crop: '80x80', cropopts: 'south' -%}{%- endcapture -%}
+<img
+  src="{{ voidr_image_url | strip }}" 
+/>

@@ -1,0 +1,7 @@
+{% assign  product_url = image_url | img_url: 'master' %}
+{%- capture voidr_image_url %}{% render 'voidr', src: product_url, compress: '20', resize: '80x80', resizefit: 'cover' -%}{%- endcapture -%}
+<img
+  src="{{ voidr_image_url | strip }}" 
+  width="{{ section.settings.logo.width }}"
+  height="{{ section.settings.logo.height }}"
+/>
